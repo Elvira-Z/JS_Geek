@@ -1,12 +1,20 @@
-let count = 1;
-const array = [];
-while (count <= 5) {
-    const element = (Math.round(Math.random() * 10));
-    count++;
-    array.push(element);
-}
+const products = [
+    {
+        id: 3,
+        price: 200,
+    },
+    {
+        id: 4,
+        price: 900,
+    },
+    {
+        id: 1,
+        price: 1000,
+    },
+];
 
 
-
-console.log(array);
-console.log(array.map(array => array ** 2));
+products.forEach(element => {
+    element.price = element.price - (element.price * 0.15);
+    console.log(element.price);
+})

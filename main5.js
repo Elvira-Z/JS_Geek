@@ -1,6 +1,11 @@
+const en = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const ru = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"];
 
 
-for (let i = 0; i <= 9; console.log(i++)) {
+const object = {};
 
+for (let i = 0; i < en.length; i++) {
+    object[en[i]] = ru[i];
 
 }
+console.log(object);
