@@ -66,7 +66,7 @@
     /*
     1. При изменении значения в input с id="from", значение содержащееся в нем
     должно моментально отображаться в span. То есть при печати в input'е тег span
-    также должен меняться.ok
+    также должен меняться.
     */
 
     const span = document.querySelector('span')
@@ -80,7 +80,7 @@
     2. При клике на кнопку с классом messageBtn необходимо элементу с классом
     message:
     1) добавить два класса: animate__animated и animate__fadeInLeftBig
-    2) поставить данному элементу стиль visibility в значение 'visible'. ок?
+    2) поставить данному элементу стиль visibility в значение 'visible'. 
      */
     const messageBtn = document.querySelector('.messageBtn');
     const message = document.querySelector('.message');
@@ -88,7 +88,7 @@
     messageBtn.addEventListener('click', (e) => {
       message.classList.add('animate__animated');
       message.classList.add('animate__fadeInLeftBig');
-      message.style.visibility = 'visible'
+      message.style.visibility = 'visible';
     })
 
     /*
@@ -100,7 +100,7 @@
     при вводе в данное поле, произвести проверку:
     Если поле пустое, необходимо данное поле подсветить (поставить класс error
     данному полю).
-    Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать. ок
+    Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать. 
      */
     const formControl = document.querySelectorAll('.form-control');
 
