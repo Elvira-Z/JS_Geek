@@ -14,83 +14,129 @@
 стирать, код с решением задачи пишем под комментарием.
 -->
 
-  <a href="#" class="card-link">Card link</a>
-  <a href="#" class="card-link">Another link</a>
+  <p class="super_element">Привет</p>
 
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title" data-number="100">Card title</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-      <p class="card-text" data-number="50">
-        Some quick example text to build on the card title and make up the bulk of the card's
-        content.
-      </p>
-      <a href="#" id="super_link" class="card-link">Card link</a>
-      <a href="#" class="card-link" data-number="50">Another link</a>
-    </div>
-  </div>
+  <img src="https://placeimg.com/50/50/animals" alt="">
+  <img src="https://placeimg.com/50/50/arch" alt="">
+  <img src="https://placeimg.com/50/50/nature" alt="">
+  <img src="https://placeimg.com/50/50/people" alt="">
+  <img src="https://placeimg.com/50/50/tech" alt="">
+  <img src="https://placeimg.com/50/50/tech/grayscale" alt="">
+  <img src="https://placeimg.com/50/50/tech/sepia" alt="">
+
+  <br>
+
+  <button>Кнопка</button>
+  <button class="super_element">Кнопка с классом btn</button>
+  <button>Кнопка</button>
+
+  <br>
+
+  <textarea></textarea>
+
+  <br>
+
+  <ul>
+    <li>
+      <button>Кнопка 1</button>
+    </li>
+    <li>
+      <button>Кнопка 2</button>
+    </li>
+    <li>
+      <button>Кнопка 3</button>
+    </li>
+    <li>
+      <button>Кнопка 4</button>
+    </li>
+  </ul>
 
   <script>
     "use strict";
 
     /*
-    1. Найти по id, используя getElementById, элемент с id равным "super_link" и
-    вывести этот элемент в консоль.
-     */
-    console.log(document.getElementById("super_link"));
+    1. Необходимо вывести сообщение в консоль "все теги прогрузились", когда все
+    теги будут созданы браузером. 
+    */
+    document.addEventListener('DOMContentLoaded', function (e) {
+      console.log('все теги прогрузились');
+    });
 
     /*
-    2. Внутри всех элементов на странице, которые имеют класс "card-link",
-    поменяйте текст внутри элемента на "ссылка".
-     */
-
-    const cardLink = document.querySelectorAll('.card-link')
-
-    for (let i = 0; i < cardLink.length; i++) {
-      const cardLink1 = cardLink[i];
-      cardLink1.innerHTML = "ссылка";
-    }
+    2. Необходимо вывести сообщение в консоль "страница загрузилась", когда все
+    ресурсы страницы будут загружены. 
+    */
+    window.addEventListener('load', function (e) {
+      console.log('Страница загрузилась');
+    })
 
     /*
-    3. Найти все элементы на странице с классом "card-link", которые лежат в
-    элементе с классом "card-body" и вывести полученную коллекцию в консоль.
-     */
+    3. При клике на какой-либо тег на странице в консоль должно выводиться
+    сообщение наподобие:
+    Класс "super_element" присутствует в элементе "div".
+    сообщение должно определять присутствует или отсутствует класс "super_element"
+    у элемента, а также выводить в нижнем регистре верный тег в данной строке, по
+    которому был совершен клик.
+    Необходимо использовать делегирование.
+    */
 
-    const cardLinkFrmBody = document.querySelector('.card-body')
-    const cardLinkFrmBody1 = cardLinkFrmBody.querySelectorAll('.card-link')
-    console.log(cardLinkFrmBody1)
-    /*
-    4. Найти первый попавшийся элемент на странице у которого есть атрибут
-    data-number со значением 50 и вывести его в консоль.
-     */
-    const text = document.querySelectorAll("[data-number='50']")
-    console.log(text)
+    document.addEventListener('click', (event) => {
+      if (!event.target.classList.contains('super_element'))
+        console.log(`Класс "super_element" отсутствует в "${event.target.tagName}"`);
+      else
+        console.log(`Класс "super_element" присутствует в "${event.target.tagName}"`);
 
-    /*
-    5. Выведите содержимое тега title в консоль.
-     */
-    const title = document.querySelector('title')
-    console.log(title.innerHTML)
+    })
+      ;
 
     /*
-    6. Получите элемент с классом "card-title" и выведите его родительский узел
-    в консоль.
+    4. Сделайте, чтобы при наведении на textarea в консоли появлялось сообщение:
+    "Вы навели на textarea." 
      */
-    console.log(document.querySelector('.card-title'));
+    const textArea = document.querySelector('textarea');
+    textArea.addEventListener('mouseover', function (e) {
+      console.log('Вы навели на textarea.');
+    });
 
     /*
-    7. Создайте тег `p`, запишите внутри него текст "Привет" и добавьте созданный
-    тег в начало элемента, который имеет класс "card".
+    5. Необходимо повесить событие клика на тег ul. В обработчике события в
+    консоль необходимо выводить текст, который записан внутри элемента кнопки,
+    по которой был произведен клик.
+    Если клик был не по кнопке, то ничего выводить не нужно.
+    Необходимо использовать делегирование. 
      */
-    const card = document.querySelector('.card')
-    const newP = document.createElement('p')
-    newP.innerHTML = 'Привет'
-    card.prepend(newP)
+    const ul = document.querySelector('ul');
+
+    ul.onclick = function (event) {
+      let button = event.target.closest('button');
+      if (!button) return;
+      if (!ul.contains(button)) return;
+      console.log(event.target.textContent);
+
+    };
 
     /*
-    8. Удалите тег h6 на странице.
+    6. Вопрос: Почему в console.log пишется сначала текст из 5 задания и только
+    потом выводится текст из 3 задания, если мы кликаем по кнопкам в ul?
+    Ответ необходимо написать здесь же, под этим комментарием, своими словами.
+    */
+
+    //Думаю потому что мы в 5 задании онклик привязали к ul, а в 3 задании ко всем элементам, всему документу.
+    //т.к. ul находится ближе к button, то и функция срабатывает раньше, чем в 3 задании.
+    /*
+
+
+    7. С помощью JS необходимо изменить цвет заднего фона каждого второго тега li. 
      */
-    document.querySelector('.card-subtitle.mb-2.text-muted').remove()
+
+    window.addEventListener('load', function (e) {
+      let allLi = document.querySelectorAll('li:nth-child(2n)');
+      for (let i = 0; i < allLi.length; i++) {
+        allLi[i].style.background = 'green';
+
+      }
+
+    })
 
   </script>
 </body>
